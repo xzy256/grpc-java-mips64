@@ -58,7 +58,7 @@ subprojects {
     }
 
     ext {
-        def exeSuffix = ""   //osdetector.os == 'windows' ? ".exe" : ""
+        def exeSuffix = osdetector.os == 'windows' ? ".exe" : ""
         protocPluginBaseName = 'protoc-gen-grpc-java'
         javaPluginPath = "$rootDir/compiler/build/exe/java_plugin/$protocPluginBaseName$exeSuffix"
 
