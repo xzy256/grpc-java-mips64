@@ -1,0 +1,63 @@
+diff --git a/build.gradle b/build.gradle
+index 5b2a11c..66c910d 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -4,7 +4,8 @@ buildscript {
+     mavenLocal()
+   }
+   dependencies {
+-    classpath 'com.google.gradle:osdetector-gradle-plugin:1.4.0'
++    classpath 'com.google.gradle:osdetector-gradle-plugin:1.4.1-SNAPSHOT'
++    classpath 'kr.motd.maven:os-maven-plugin:1.5.1.Final-SNAPSHOT'
+   }
+ }
+ 
+@@ -25,8 +26,8 @@ subprojects {
+     targetCompatibility = 1.6
+ 
+     repositories {
+-        mavenCentral()
+         mavenLocal()
++        mavenCentral()
+     }
+ 
+     [compileJava, compileTestJava].each() {
+@@ -57,7 +58,7 @@ subprojects {
+     }
+ 
+     ext {
+-        def exeSuffix = osdetector.os == 'windows' ? ".exe" : ""
++        def exeSuffix = ""   //osdetector.os == 'windows' ? ".exe" : ""
+         protocPluginBaseName = 'protoc-gen-grpc-java'
+         javaPluginPath = "$rootDir/compiler/build/exe/java_plugin/$protocPluginBaseName$exeSuffix"
+ 
+diff --git a/compiler/build.gradle b/compiler/build.gradle
+index 7e116d4..aee587d 100644
+--- a/compiler/build.gradle
++++ b/compiler/build.gradle
+@@ -47,6 +47,9 @@ model {
+       }
+     }
+     gcc(Gcc) {
++      target("mips64el"){
++	  cppCompiler.executable = "/usr/bin/gcc"
++	}
+     }
+     clang(Clang) {
+     }
+@@ -59,11 +62,14 @@ model {
+     x86_64 {
+       architecture "x86_64"
+     }
++    mips64el {
++      architecture "mips64el"
++    }
+   }
+ 
+   components {
+     java_plugin(NativeExecutableSpec) {
+-      if (arch in ['x86_32', 'x86_64']) {
++      if (arch in ['x86_32', 'x86_64', 'mips64el']) {
+         // If arch is not within the defined platforms, we do not specify the
+         // targetPlatform so that Gradle will choose what is appropriate.
+         targetPlatform arch
