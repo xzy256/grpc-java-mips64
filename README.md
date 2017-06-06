@@ -1,5 +1,6 @@
 gRPC-Java - An RPC library and framework
 ========================================
+<pre>
 build os-maven-plugin for mips64 arch support first. See [!build os-maven-plugin](https://github.com/xzy256/os-maven-plugin-mips64el)
 then build grpc-java, see [patch](build-grpc-java-mips64.patch)
 build log and error info see[build log](build-grpc-java.log)
@@ -7,7 +8,7 @@ build log and error info see[build log](build-grpc-java.log)
 $cd compiler
 $../gradlew java_pluginExecutable --debug
 
-
+</pre>
 
 
 gRPC-Java works with JDK 6. TLS usage typically requires using Java 8, or Play
