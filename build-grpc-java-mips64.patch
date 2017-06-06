@@ -21,16 +21,6 @@ index 5b2a11c..66c910d 100644
 +        mavenCentral()
      }
  
-     [compileJava, compileTestJava].each() {
-@@ -57,7 +58,7 @@ subprojects {
-     }
- 
-     ext {
--        def exeSuffix = osdetector.os == 'windows' ? ".exe" : ""
-+        def exeSuffix = ""   //osdetector.os == 'windows' ? ".exe" : ""
-         protocPluginBaseName = 'protoc-gen-grpc-java'
-         javaPluginPath = "$rootDir/compiler/build/exe/java_plugin/$protocPluginBaseName$exeSuffix"
- 
 diff --git a/compiler/build.gradle b/compiler/build.gradle
 index 7e116d4..aee587d 100644
 --- a/compiler/build.gradle
