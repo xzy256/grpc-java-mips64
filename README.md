@@ -1,13 +1,12 @@
 gRPC-Java - An RPC library and framework
 ========================================
-<pre>
-build os-maven-plugin for mips64 arch support first. See [!build os-maven-plugin](https://github.com/xzy256/os-maven-plugin-mips64el)
-then build grpc-java, see [patch](build-grpc-java-mips64.patch)
-build log and error info see[build log](build-grpc-java.log)
 
+build os-maven-plugin for mips64 arch support first. See [build os-maven-plugin](https://github.com/xzy256/os-maven-plugin-mips64el) <br>
+then build grpc-java, see [patch](build-grpc-java-mips64.patch) <br>
+build log and error info see[build log](build-grpc-java.log)<br>
+<pre>
 $cd compiler
 $../gradlew java_pluginExecutable --debug
-
 </pre>
 
 
